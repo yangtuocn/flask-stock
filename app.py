@@ -1,5 +1,6 @@
 from flask import Flask, request, session, g, redirect, url_for, \
                   abort, render_template, flash, jsonify
+import os
 import quandl
 import requests
 import simplejson as json
@@ -26,4 +27,5 @@ def add_query():
     return redirect(url_for('index'))
 
 if __name__ == "__main__":
-    app.run()
+    port = int(os.enviorn.get("PORT", 5000))
+    app.run(host = '0.0.0.0', port = port)
