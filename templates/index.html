@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flaskr</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="page">
+
+    <h1>Flaskr-stock</h1>
+    {% block body %}{% endblock %}
+
+    <form action="{{ url_for('add_query') }}" method="post" class="add-entry">
+      <dl>
+        <dt>Stock:</dt>
+        <dd><input type="text" size="30" name="stock"></dd>
+        <dd><input type="submit" value="Query"></dd>
+      </dl>
+    </form>
+    <ul class="entries">
+      {% for entry in entries %}
+        <li><h2>{{ entry.stock }}</h2></li>
+      {% else %}
+        <li><em>No entries yet. Add some!</em></li>
+      {% endfor %}
+    </ul>
+
+  </div>
+
+</body>
+</html>
