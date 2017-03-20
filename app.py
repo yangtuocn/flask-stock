@@ -12,6 +12,9 @@ DEBUG = True
 app = Flask(__name__)
 app.config.from_object(__name__)
 
+output_file('templates\plot.html')
+p = figure(x_axis_type = "datetime")
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -20,9 +23,7 @@ def index():
 def add_query():
     quandl.ApiConfig.api_key = 'oqWh8vNGwgZkRk4PvsyQ'
     data = quandl.get_table('WIKI/PRICES', ticker = request.form['stock'])
-    output_file('templates\plot.html')
-    p = figure()
-    p.line(range(len(data)), list(data['close']))
+    p.line(list(data['date']), list(data['close']))
     save(p)
     # show(p)
     # return redirect(url_for('plot'))
