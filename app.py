@@ -5,7 +5,7 @@ import quandl
 import requests
 import simplejson as json
 import pandas as pd
-from bokeh.plotting import figure, output_file, show
+from bokeh.plotting import figure, output_file, show, save
 
 DEBUG = True
 
@@ -23,6 +23,7 @@ def add_query():
     output_file('templates\plot.html')
     p = figure()
     p.line(range(len(data)), list(data['close']))
+    save(p)
     # show(p)
     # return redirect(url_for('plot'))
     return render_template('plot.html')
