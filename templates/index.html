@@ -2,7 +2,19 @@
 <html>
 <head>
   <title>Stock Query</title>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" type="text/css" 
+        href="{{ url_for('static', filename='style.css') }}">
+
+  <link rel="stylesheet" type="text/css" 
+        href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.4.min.css">
+  <line rel="stylesheet" type="text/css"
+        href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.4.min.css">
+
+  <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.4.min.js"></script>
+  <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.4.min.js"></script>
+
+  {{ plot_script}}
+
 </head>
 <body>
 
@@ -20,6 +32,8 @@
     </form>
 
   </div>
+
+  {{ plot_div }}
 
 </body>
 </html>
